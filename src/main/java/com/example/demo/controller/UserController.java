@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
     
+    @Autowired
     private UserService userService;
    
     @PostMapping
@@ -33,7 +34,7 @@ public class UserController {
     
     @GetMapping
     public List<User> getUserType(){
-        return userService.getAllUser();
+        return userService.getAllData();
     }
     
     @GetMapping("/{id}")

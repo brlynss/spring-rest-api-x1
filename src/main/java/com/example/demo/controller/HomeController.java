@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class HomeController {
     
+    @Autowired
     private UserTypeService userTypeService;
     
 //    @GetMapping
