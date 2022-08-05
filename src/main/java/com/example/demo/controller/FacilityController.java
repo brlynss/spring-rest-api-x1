@@ -4,8 +4,8 @@
  */
 package com.example.demo.controller;
 
-import com.example.demo.model.UserRole;
-import com.example.demo.service.UserRoleService;
+import com.example.demo.model.Facility;
+import com.example.demo.service.FacilityService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,34 +23,35 @@ import org.springframework.web.bind.annotation.RestController;
  * @author LENOVO
  */
 @RestController
-@RequestMapping("/user-role")
-public class UserRoleController {
+@RequestMapping("/facility")
+public class FacilityController {
     
     @Autowired
-    private UserRoleService userRoleService;
+    private FacilityService facilityService;
     
     @PostMapping
-    public UserRole addNewUserRole(@RequestBody UserRole userRole){
-        return userRoleService.addNewRole(userRole);
+    public Facility addNewFacility(@RequestBody Facility facility){
+        return facilityService.addNewFacility(facility);
     }
 //    
-    @GetMapping("/list")
-    public List<UserRole> getAllUserRole(){
-        return userRoleService.getAllData();
+    @GetMapping
+    public List<Facility> getAllUserRole(){
+        return facilityService.getAllFacility();
     }
 //    
     @GetMapping("/{id}")
-    public UserRole getById(@PathVariable (name = "id")Integer id){
-        return userRoleService.getById(id);
+    public Facility getById(@PathVariable (name = "id")Integer id){
+        return facilityService.getById(id);
     }
     
     @PutMapping("/{id}")
-    public UserRole updateData(@PathVariable("id") Integer id, @RequestBody UserRole userRole){
-        return userRoleService.updateData(id, userRole);
+    public Facility updateData(@PathVariable("id") Integer id, @RequestBody Facility facility){
+        return facilityService.updateData(id, facility);
     }
     
     @DeleteMapping("/{id}")
-    private Map<String, Boolean> deleteUserRole(@PathVariable("id") Integer Id){
-        return userRoleService.deleteUserRole(Id);
+    private Map<String, Boolean> deleteFacility(@PathVariable("id") Integer Id){
+        return facilityService.deleteFacility(Id);
     }
+    
 }

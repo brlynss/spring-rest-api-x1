@@ -4,6 +4,7 @@
  */
 package com.example.demo.model;
 
+import java.util.Date;
 import javax.persistence.*;
 
 /**
@@ -11,22 +12,28 @@ import javax.persistence.*;
  * @author LENOVO
  */
 @Entity
-@Table(name = "user_role")
-public class UserRole {
+@Table(name = "facility")
+public class Facility {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "name", nullable=false)
+    @Column(name = "name")
     private String name;
+    @Column(name = "created")
+    private Date created;
+    @Column(name = "updated")
+    private Date updated;
 
-    public UserRole() {
+    public Facility() {
     }
 
-    public UserRole(int id, String name) {
+    public Facility(int id, String name, Date created, Date updated) {
         this.id = id;
         this.name = name;
+        this.created = created;
+        this.updated = updated;
     }
 
     public int getId() {
@@ -44,5 +51,22 @@ public class UserRole {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+    
     
 }

@@ -4,7 +4,7 @@
  */
 package com.example.demo.service;
 
-import com.example.demo.model.UserRole;
+import com.example.demo.model.Facility;
 import java.util.List;
 import java.util.Map;
 
@@ -12,14 +12,16 @@ import java.util.Map;
  *
  * @author LENOVO
  */
-public interface UserRoleService {
-    UserRole addNewRole (UserRole userRole);
+public interface FacilityService {
+    Facility addNewFacility (Facility facility);
     
-    List<UserRole> getAllData();
+    List<Facility> getAllFacility();
     
-    UserRole getById(Integer id);
+    Facility getById(Integer id);
     
-    UserRole updateData(Integer id, UserRole userRole);
+    Facility updateData(Integer id, Facility facility);
     
-    Map<String, Boolean> deleteUserRole(Integer id);
+    Map<String, Boolean> deleteFacility(Integer id);
+
+
 }
