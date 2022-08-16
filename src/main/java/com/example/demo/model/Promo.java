@@ -6,6 +6,8 @@ package com.example.demo.model;
 
 import java.util.Date;
 import javax.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  *
@@ -36,8 +38,10 @@ public class Promo {
     @Column(name = "company_id")
     private String companyId;
     @Column(name = "created")
+    @CreationTimestamp
     private Date created;
     @Column(name = "updated")
+    @UpdateTimestamp
     private Date updated;
 
     public Promo() {
@@ -144,6 +148,8 @@ public class Promo {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
+
+   
     
     
 }

@@ -5,10 +5,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Promo;
+import com.example.demo.response.CommonResponse;
+import com.example.demo.response.CommonResponseGenerator;
 import com.example.demo.service.PromoService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,9 +42,14 @@ public class PromoController {
         return promoService.getAllPromo();
     }
 
-    @GetMapping("/{id}")
-    public Promo getById(@PathVariable (name = "id")Integer id){
-        return promoService.getById(id);
+    @GetMapping("/get/{id}")
+    public CommonResponse<Promo> getById(@PathVariable ("id")Integer id){
+        try {
+             return CommonResponseGenerator.successResponse(promoService.getById(id));
+        } catch(RuntimeException e){
+            return CommonResponseGenerator.errorResponse(e.getMessage(), 500, "internal server eror");
+        }
+       
     }
     
     @PutMapping("/{id}")

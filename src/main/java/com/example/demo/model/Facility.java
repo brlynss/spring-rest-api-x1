@@ -6,6 +6,8 @@ package com.example.demo.model;
 
 import java.util.Date;
 import javax.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 /**
  *
@@ -25,6 +27,7 @@ public class Facility {
     private Date created;
     @Column(name = "updated")
     private Date updated;
+    
 
     public Facility() {
     }
@@ -67,6 +70,10 @@ public class Facility {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
+
+    
+
+    
     
     
 }

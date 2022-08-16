@@ -24,6 +24,7 @@ public class PromoServiceImpl implements PromoService{
 
     @Override
     public Promo addNewPromo(Promo promo) {
+        promo.setUsed(0);
         return promoRepository.save(promo);
     }
 
