@@ -4,8 +4,8 @@
  */
 package com.example.demo.controller;
 
-import com.example.demo.model.Facility;
-import com.example.demo.service.FacilityService;
+import com.example.demo.model.Company;
+import com.example.demo.service.CompanyService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,35 +23,35 @@ import org.springframework.web.bind.annotation.RestController;
  * @author LENOVO
  */
 @RestController
-@RequestMapping("/facility")
-public class FacilityController {
+@RequestMapping("/company")
+public class CompanyController {
     
     @Autowired
-    private FacilityService facilityService;
+    private CompanyService companyService;
     
     @PostMapping
-    public Facility addNewFacility(@RequestBody Facility facility){
-        return facilityService.addNewFacility(facility);
+    public Company addNewCompany(@RequestBody Company company){
+        return companyService.addNewCompany(company);
     }
 
     @GetMapping
-    public List<Facility> getAllUserRole(){
-        return facilityService.getAllFacility();
+    public List<Company> getAllUserRole(){
+        return companyService.getAllCompany();
     }
 
     @GetMapping("/{id}")
-    public Facility getById(@PathVariable (name = "id")Integer id){
-        return facilityService.getById(id);
+    public Company getById(@PathVariable (name = "id")String id){
+        return companyService.getById(id);
     }
     
     @PutMapping("/{id}")
-    public Facility updateData(@PathVariable("id") Integer id, @RequestBody Facility facility){
-        return facilityService.updateData(id, facility);
+    public Company updateData(@PathVariable("id") String id, @RequestBody Company company){
+        return companyService.updateData(id, company);
     }
     
     @DeleteMapping("/{id}")
-    private Map<String, Boolean> deleteFacility(@PathVariable("id") Integer Id){
-        return facilityService.deleteFacility(Id);
+    private Map<String, Boolean> deleteCompany(@PathVariable("id") String Id){
+        return companyService.deleteCompany(Id);
     }
     
 }
