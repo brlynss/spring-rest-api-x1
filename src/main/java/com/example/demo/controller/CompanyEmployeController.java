@@ -4,10 +4,10 @@
  */
 package com.example.demo.controller;
 
-import com.example.demo.model.Company;
+import com.example.demo.model.CompanyEmploye;
 import com.example.demo.response.CommonResponse;
 import com.example.demo.response.CommonResponseGenerator;
-import com.example.demo.service.CompanyService;
+import com.example.demo.service.CompanyEmployeService;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,48 +20,52 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
+
+
 /**
  *
  * @author LENOVO
  */
 @RestController
-@RequestMapping("/company")
-public class CompanyController {
+@RequestMapping("/company-employe")
+public class CompanyEmployeController {
     
     @Autowired
-    private CompanyService companyService;
+    private CompanyEmployeService companyEmployeService;
     
-    @PostMapping
-    public Company addNewCompany(@RequestBody Company company){
-        return companyService.addNewCompany(company);
+   @PostMapping
+    public CompanyEmploye addNewCompanyEmploye(@RequestBody CompanyEmploye companyEmploye){
+        return companyEmployeService.addNewCompanyEmploye(companyEmploye);
     }
-
+    
     @GetMapping
-    public List<Company> getAllCompany(){
-        return companyService.getAllCompany();
+    public List<CompanyEmploye> getAllCompanyEmploye(){
+        return companyEmployeService.getAllCompanyEmploye();
     }
-
+    
     @GetMapping("/{id}")
-    public CommonResponse<Company> getById(@PathVariable (name = "id")String id){
+    public CommonResponse<CompanyEmploye> getById(@PathVariable (name = "id")Integer id){
         try {
-             return CommonResponseGenerator.successResponse(companyService.getById(id));
+             return CommonResponseGenerator.successResponse(companyEmployeService.getById(id));
         } catch(RuntimeException e){
             return CommonResponseGenerator.errorResponse(e.getMessage(), 500, "internal server eror");
         }
     }
     
     @PutMapping("/{id}")
-    public CommonResponse<Company> updateData(@PathVariable("id") String id, @RequestBody Company company){
+    public CommonResponse<CompanyEmploye> updateData(@PathVariable("id") Integer id, @RequestBody CompanyEmploye companyEmploye){
         try {
-             return CommonResponseGenerator.successResponse(companyService.updateData(id, company));
+             return CommonResponseGenerator.successResponse(companyEmployeService.updateData(id, companyEmploye));
         } catch(RuntimeException e){
             return CommonResponseGenerator.errorResponse(e.getMessage(), 500, "internal server eror");
         }
     }
     
     @DeleteMapping("/{id}")
-    private Map<String, Boolean> deleteCompany(@PathVariable("id") String Id){
-        return companyService.deleteCompany(Id);
+    private Map<String, Boolean> deleteCompanyEmploye(@PathVariable("id") Integer Id){
+        return companyEmployeService.deleteCompanyEmploye(Id);
     }
     
 }
