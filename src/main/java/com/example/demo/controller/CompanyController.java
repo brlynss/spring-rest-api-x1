@@ -5,6 +5,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Company;
+import com.example.demo.response.CommonResponse;
+import com.example.demo.response.CommonResponseGenerator;
 import com.example.demo.service.CompanyService;
 import java.util.List;
 import java.util.Map;
@@ -40,8 +42,12 @@ public class CompanyController {
     }
 
     @GetMapping("/{id}")
-    public Company getById(@PathVariable (name = "id")String id){
-        return companyService.getById(id);
+    public CommonResponse<Company> getById(@PathVariable (name = "id")String id){
+        try {
+             return CommonResponseGenerator.successResponse(companyService.getById(id));
+        } catch(RuntimeException e){
+            return CommonResponseGenerator.errorResponse(e.getMessage(), 500, "internal server eror");
+        }
     }
     
     @PutMapping("/{id}")
